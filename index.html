@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Redirigiendo...</title>
+    <script>
+        function abrirYcerrar() {
+            // Obtener el parámetro "form" de la URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const formId = urlParams.get('form') || '1'; // Por defecto, usa el formulario 1 si no hay parámetro
+
+            // Definir los enlaces de SharePoint según el formulario
+            const sharepointLinks = {
+                '1': 'https://8wb0d8-my.sharepoint.com/:f:/g/personal/kelonio_levelt_me1/ElU99ZUq-IpFti2zfnmyX3gBQS4mhNBLw_gWwDfklufbqg?e=ExhKkx', // SEMIBRICK SWITCH
+                '2': 'https://8wb0d8-my.sharepoint.com/:f:/g/personal/kelonio_levelt_me1/EhNXyy5vsRpAlSF79hkReqMBs56Id2RQWOosGSAcrcc60g?e=ogP1me', // CAMBIAR SD
+                '3': 'https://8wb0d8-my.sharepoint.com/:f:/g/personal/kelonio_levelt_me1/Eib8hySoIb1EmPCCfp4nDOcBN4kc4iQCh4wnNkoD341EFw?e=CNbXdT', // CHECKPOINT
+                '4': 'https://8wb0d8-my.sharepoint.com/:f:/g/personal/kelonio_levelt_me1/EhDK2YjryEJKkitviK_3NFsBTuITaDk3iQy8A0hix29L1A?e=HiGoxK', //  DBI
+                '5': 'https://8wb0d8-my.sharepoint.com/:f:/g/personal/kelonio_levelt_me1/EgQIVmxJ5gZLj64z4J_VASEB6RKUerX-9wexkI-TBzkUig?e=jeWf1C', // EBOOK
+                '6': 'https://8wb0d8-my.sharepoint.com/:f:/g/personal/kelonio_levelt_me1/EikZkRtrjstJlPdp4O1YNpMBBdUQI1L0DAM2O6MVPTgj1A?e=yIcOhR', // EDIZON
+                '7': 'https://8wb0d8-my.sharepoint.com/:f:/g/personal/kelonio_levelt_me1/Esd4wNrQzM1KrY9PjPM8ZBUB2-H4CjdHHRtipd_XGKLpLA?e=rQKEdE', // EMUIBO 
+                '8': 'https://8wb0d8-my.sharepoint.com/:f:/g/personal/kelonio_levelt_me1/EvFu6KO4urZGlfcNZCjokCQBQkGdKhZAn1bxHCFOgojoFQ?e=CnB1tM', // FTP
+                '9': 'https://8wb0d8-my.sharepoint.com/:f:/g/personal/kelonio_levelt_me1/Ero62ALu3UJFp9mWmFSOXWMBPwpCXw6GnlZaW7PzhLdyuw?e=NzmJe5', // PACK MÁGICO
+                '10': 'https://8wb0d8-my.sharepoint.com/:f:/g/personal/kelonio_levelt_me1/EoiVh9cWC4ROmrwcok3WFBoBE_dTBvdD_Nl37oQOM6DnRA?e=A3bip3', // JKSV 
+                '11': 'https://8wb0d8-my.sharepoint.com/:f:/g/personal/kelonio_levelt_me1/EomlRVCH5EZNg8JqKtD34kIBv4LXyOWkzdtrV3AEf_8e_A?e=Chb71b', // LAN PLAY
+                '12': 'https://8wb0d8-my.sharepoint.com/:f:/g/personal/kelonio_levelt_me1/EmYoJw5Z7ZxMrB7RrPu_HCQBUU-bMg2iXEcPof3pQHZLEw?e=vS8S3d', // MISSION CONTROL
+                '13': 'https://8wb0d8-my.sharepoint.com/:f:/g/personal/kelonio_levelt_me1/EliMFxJyiHFHpKQrYD83v9oBG18BTQbxRGj5Ay4hHuznAg?e=TgZH2H', // MODO INCÓGNITOS 
+                '14': 'https://8wb0d8-my.sharepoint.com/:f:/g/personal/kelonio_levelt_me1/EhuaG5QOfwxHqlX4ugAyULEBcb2iJcFwSffIcay6Ia_-TQ?e=NDFQAF', // NXDUMP
+                '15': 'https://8wb0d8-my.sharepoint.com/:f:/g/personal/kelonio_levelt_me1/Eo25WUOCDWtOmZYa0oDvuNEBjTJMxiOYmvKnjgYHSS1Q_A?e=7coesX', // NXTHEMES
+                '16': 'https://8wb0d8-my.sharepoint.com/:f:/g/personal/kelonio_levelt_me1/ErDmiHE63YFNidJURanLjKgBdwprcf5AJ7gS7VvCncvLUA?e=CmLKbw', // PACK MARIKO 
+                '17': 'https://8wb0d8-my.sharepoint.com/:f:/g/personal/kelonio_levelt_me1/EsrsKEvRCDRDub5c3nf_k5QBykTVLH_-OO8GFS8_8kcGag?e=jfKMaN', // PKHEX
+                '18': 'https://8wb0d8-my.sharepoint.com/:f:/g/personal/kelonio_levelt_me1/EhH5LX6qBkFMuWOthXYshXoBQOrXfgJO2oc6ZDKQgwgYyg?e=qyBT7g', // PPLAY
+                '19': 'https://8wb0d8-my.sharepoint.com/:f:/g/personal/kelonio_levelt_me1/EuTepFQp8ShPiHsnhUikl4kBeVRzQPQBS-ldLbkVPnUPJA?e=EZ4xan', // REKADO
+                '20': 'https://8wb0d8-my.sharepoint.com/:f:/g/personal/kelonio_levelt_me1/EmE1OpcfLDRElojBevSuePkBbYRKfWhRML_PFTTKlPPK2Q?e=8ZQgO9', // SYSTUNE
+                '21': 'https://8wb0d8-my.sharepoint.com/:f:/g/personal/kelonio_levelt_me1/EsuiJXjr1uJFgL_2a9wR8CABySTcbDxkL1f-2kg6GmiaHg?e=ePb2lJ', // TEGRA
+                '22': 'https://8wb0d8-my.sharepoint.com/:f:/g/personal/kelonio_levelt_me1/EjQmY8kqVWVPiRtBi3UpVRcBbNTgLTourydWcCeA-8EIRA?e=OzUkjc', // TESLA 
+                '23': 'https://8wb0d8-my.sharepoint.com/:f:/g/personal/kelonio_levelt_me1/EjmpigrVsEdGgaRnpjXdylIBnqg0Bsa_slSiSvRpqQ7OcA?e=Jnd2Kr', // TEST MARIKO         
+                '24': ''  // 
+            };
+
+            // Seleccionar el enlace de SharePoint según el formulario
+            const sharepointUrl = sharepointLinks[formId] || sharepointLinks['1']; // Fallback al enlace del Formulario 1
+
+            // Abrir las pestañas y verificar si se abren
+            const discordWindow = window.open("https://discord.gg/8Fv8GDg", "_blank"); // Discord
+            const amazonWindow = window.open("https://amzn.to/3DSlb4e", "_blank");    // Amazon Prime
+            const sharepointWindow = window.open(sharepointUrl, "_blank");            // SharePoint dinámico
+
+            // Intentar cerrar la ventana después de un retraso
+            setTimeout(function() {
+                // Verificar si las pestañas se abrieron (si alguna es null, el bloqueador impidió la apertura)
+                if (!discordWindow || !amazonWindow || !sharepointWindow) {
+                    document.body.innerHTML = "<p>Error: No se abrieron las pestañas. Desactiva el bloqueador de pop-ups y actualiza la página.</p>";
+                } else {
+                    window.close();
+                    // Si window.close() falla, mostrar mensaje
+                    document.body.innerHTML = "<p>Redirección completa. Puedes cerrar esta pestaña manualmente.</p>";
+                }
+            }, 1000); // Aumentado a 1 segundo para mayor compatibilidad
+        }
+
+        // Ejecutar al cargar la página
+        window.onload = abrirYcerrar;
+    </script>
+</head>
+<body>
+    <p>Redirigiendo... Si las pestañas no se abren, desactiva el bloqueador de pop-ups y actualiza la página.</p>
+</body>
+</html>
